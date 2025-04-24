@@ -4,7 +4,7 @@ import PhoneNumberKit
 
 public class SwiftLibphonenumberPlugin: NSObject, FlutterPlugin {
     
-    let phoneNumberKit: PhoneNumberKit = PhoneNumberKit()
+    let phoneNumberKit: PhoneNumberUtility = PhoneNumberUtility()
     
     public static func register(with registrar: FlutterPluginRegistrar) {
         let channel = FlutterMethodChannel(name: "plugin.libphonenumber", binaryMessenger: registrar.messenger())
@@ -125,7 +125,7 @@ public class SwiftLibphonenumberPlugin: NSObject, FlutterPlugin {
         let phoneNumber = arguments["phoneNumber"] as! String
         let isoCode = arguments["isoCode"] as! String
         
-        let partialFormatter: PartialFormatter = PartialFormatter(phoneNumberKit: phoneNumberKit, defaultRegion: isoCode.uppercased())
+        let partialFormatter: PartialFormatter = PartialFormatter(utility: phoneNumberKit, defaultRegion: isoCode.uppercased())
         
         let formattedNumber = partialFormatter.formatPartial(phoneNumber)
         
